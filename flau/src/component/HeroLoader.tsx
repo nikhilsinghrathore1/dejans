@@ -60,13 +60,7 @@ const HeroLoader = () => {
                             //   },"a")
                             // })
                           
-               useEffect(() => {
-                              // incCount()
-               
-                 return () => {
-                   
-                 }
-               }, [])
+          
                
 
   return (

@@ -37,3 +37,7 @@
              .pos{
                object-position:  50% 13.5%;
              }
+
+             .ori{
+              transform-origin: top left;
+             }

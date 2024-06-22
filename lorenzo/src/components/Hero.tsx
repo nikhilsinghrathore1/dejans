@@ -1,15 +1,113 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { useGSAP } from '@gsap/react'
 import img from "../../public/rose.jpg"
+import gsap from 'gsap/all'
 
 const Hero = () => {
+
+ const [sometext, setsometext] = useState("")
+ const [mainHeading, setheading] = useState("")
+ const [subheading, setsubheading] = useState("")
+ const [para, setpara] = useState("")
+ const shade = useRef([])
+ const loader= useRef()
+ let something:String = "0"
+
+
+  const shuffleText = (text:String, duration:Number , state:(text:String)=>void , delay)=>{
+    let i = 0 ;
+    console.log("ingsi")
+    const shuffleint = setInterval(()=>{
+      if(i<duration){
+         state(()=>(Math.random().toString(36).substring(2,8))) 
+         i++;
+      }
+      else{
+        clearInterval(shuffleint)
+        state(text) ;
+        
+      }
+    },delay)
+  }
+
+
+  const animatepara = (text:string  ,state:()=>void)=>{
+    let i = 0 ; 
+    setTimeout(() => {
+      
+      const interv = setInterval(()=>{
+        if(i<text.length){
+          state(prev=>prev+text[i]);
+          i++
+        }
+        else{
+          clearInterval(interv)
+          state(text)
+        }
+      },25)
+    }, 4000);
+  }
+
+
+  const two = ()=>{
+    shuffleText("lorenzo",30,setheading,200)
+    animatepara("frontend developer ////" , setsubheading)
+    animatepara("Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta sint numquam incidunt eum autem placeat, laborum eaque repellat illum quos, veritatis distinctio modi nobis ullam nihil excepturi harum quae vitae?" , setpara)
+
+  }
+
+  useGSAP(()=>{
+    let tl = gsap.timeline()
+
+    tl.to(loader.current,{
+      delay:3,
+      // y:"-100%",
+      opacity:0,
+
+      rotate:"-180deg",
+      duration:2,
+      onComplete:two()
+    })
+
+    tl.to(shade.current,{
+      width:"0%",
+      duration:0.5,
+      stagger:0.1
+    })
+    tl.to(shade.current,{
+      width:"0%",
+      duration:0.7
+      
+    })
+
+    // tl.to()
+  })
+  useEffect(() => {
+      shuffleText("100% done" , 20 , setsometext , 100)
+  
+    
+  }, [])
+  
+  
   return (
-    <div className='w-full h-screen bg-[#858D80] pt-7 px-10'>
+    <div className='w-full h-screen bg-[#858D80] relative pt-7 px-10'>
+
+    {/* this is the preloader */}
+    
+
+
+
+
+    <div ref ={loader}  className='fixed ori top-0 left-0 z-20 w-full h-screen bg-[#A12E24] '>
+              <h1  className='text-9xl absolute bottom-10 right-10 f3'>{sometext}</h1>
+    </div>
+
       {/* this is the navigation section */}
                <nav className='w-full flex items-start justify-between '>
                 {/* this is the logo text */}
                               <div>
-                                             <h1 className='text-[4.5em] leading-none f1 uppercase text-[#A32E28] '>lorenzo</h1>
-                                             <p className='f3 leading-none text-lg opacity-60 uppercase'>frontend developer /////</p>
+                                             <h1 className='text-[4.5em] leading-none f1 uppercase text-[#A32E28] '>{mainHeading}</h1>
+                                             <p className='f3 leading-none text-lg opacity-60 uppercase'>{subheading}</p>
                               </div>
 
                 {/* this is the nav buttons  */}
@@ -31,7 +129,7 @@ const Hero = () => {
                <div className='w-full h-[25vh] flex'>
                 {/* this is the section for the sub info text  */}
                           <div className='w-1/2 flex justify-end items-end'>
-                              <p className='text-sm f3 tracking-tighter leading-none opacity-85 w-[45%]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus excepturi ad totam hic sit id ut provident, porro saepe mollitia Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eligendi suscipit quos quod corporis , </p>
+                              <p className='text-sm f3 tracking-tighter leading-none opacity-85 w-[45%]'>{para} </p>
                           </div>
 
                 {/* this is the section for the folio text */}
@@ -44,7 +142,12 @@ const Hero = () => {
                {/* this is the image section */}
 
                <div className='w-full flex justify-end mt-10 '>
-                      <div className='w-[40%] rounded overflow-hidden h-[27vh]'>
+                      <div className='w-[40%] rounded overflow-hidden h-[27vh] relative'>
+                        <div className='absolute top-0 h-full w-full flex z-10'>
+                                    {[1,2,3,4].map((e,i)=>(
+                                      <div ref={(el)=>shade.current[i]=el } className='h-full w-[25%] bg-[#380200]'></div>
+                                    ))}
+                        </div>
                                     <img className='w-full h-full object-cover object-top pos' src={img} alt="not showing" />
                       </div>
                </div>
