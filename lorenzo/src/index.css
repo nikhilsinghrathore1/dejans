@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+               font-family: font1;
+               src: url("/public/lexa.otf");
+}
+ @font-face {
+               font-family: font2;
+               src: url("/public/Monorama-Regular.ttf");
+}
+ @font-face {
+               font-family: font3;
+               src: url("/public/Monorama-Medium.ttf");
+}
+ @font-face {
+               font-family: font4;
+               src: url("/public/Monorama-SemiBold.ttf");
+}
+             
+             .f1{
+               font-family: font1;
+             }
+             .f2{
+               font-family: font2;
+             }
+             .f3{
+               font-family: font3;
+             }
+             .f4{
+               font-family: font4;
+             }
+             
+             
+
+             .pos{
+               object-position:  50% 13.5%;
+             }

@@ -27,41 +27,41 @@ const HeroLoader = () => {
                               }, 300); // Adjust the interval time as needed
                             };
 
-                            useGSAP(()=>{
-                              let tl = gsap.timeline()
-                              tl.to(number.current,{
-                                delay:3.2,
-                                opacity:0
-                              })
-                              tl.to(blank.current,{
-                                y:"-100%",
-                                // opacity:0.2
-                                ease:"[0.87, 0, 0.13, 1]",
-                                stagger:0.1
+                            // useGSAP(()=>{
+                            //   let tl = gsap.timeline()
+                            //   tl.to(number.current,{
+                            //     delay:3.2,
+                            //     opacity:0
+                            //   })
+                            //   tl.to(blank.current,{
+                            //     y:"-100%",
+                            //     // opacity:0.2
+                            //     ease:"[0.87, 0, 0.13, 1]",
+                            //     stagger:0.1
                                
-                              })
-                              tl.from(flau.current,{
-                                delay:1,
-                                scale:10,
-                                opacity:0,
-                                y:"500%",
-                                stagger:0.1
-                              },"a")
-                              tl.from(imgref.current,{
+                            //   })
+                            //   tl.from(flau.current,{
+                            //     delay:1,
+                            //     scale:10,
+                            //     opacity:0,
+                            //     y:"500%",
+                            //     stagger:0.1
+                            //   },"a")
+                            //   tl.from(imgref.current,{
                                 
-                                opacity:0,
-                                y:"200%",
-                                delay:0.1
-                              },"a")
-                              tl.from(navref.current,{
-                                y:"200%",
-                                stagger:0.5,
-                                opacity:0
-                              },"a")
-                            })
+                            //     opacity:0,
+                            //     y:"200%",
+                            //     delay:0.1
+                            //   },"a")
+                            //   tl.from(navref.current,{
+                            //     y:"200%",
+                            //     stagger:0.5,
+                            //     opacity:0
+                            //   },"a")
+                            // })
                           
                useEffect(() => {
-                              incCount()
+                              // incCount()
                
                  return () => {
                    
@@ -78,9 +78,9 @@ const HeroLoader = () => {
                </nav>
 
                <div className='w-full h-[92vh] pt-12'>
-                              <div className='text-center leading-none overflow-hidden h-[40vh]'>
+                              <div className='text-center leading-[280px] overflow-hidden h-[47vh] -pt-10'>
                                              <h1>{"flau.".split("").map((e,i)=>(
-                                                            <span ref={(el)=>flau.current[i] = el} className='text-[15em] inline-block f1' key={i}>{e}</span>
+                                                            <span ref={(el)=>flau.current[i] = el} className={`text-[20em] inline-block f1 ${i===1|| i===2&& "rotate-12"}`} key={i}>{e}</span>
                                              ))}</h1>
                               </div>
 
@@ -90,13 +90,13 @@ const HeroLoader = () => {
                                                             </div>
                               </div>
                </div>
-
+{/* 
                <div  className='fixed w-full h-full top-0 text-white flex items-end justify-end '>
                 {[1,2,3,4,5].map((e,i)=>(
                   <div ref={(el)=>blank.current[i] = el} className='w-[20vw] h-full bg-black'></div>
                 ))}
                                                             <h1 ref={number} className='text-9xl fixed bottom-10 right-5 f1'>{loader}</h1>
-               </div>
+               </div> */}
 
     </div>
   )
