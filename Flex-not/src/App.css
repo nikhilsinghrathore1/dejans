@@ -1,0 +1,18 @@
+@font-face {
+  font-family: font1;
+  src: url("/Mak-Bold\ 700.otf");
+}
+@font-face {
+  font-family: font2;
+  src: url("/Mak-Light\ 300.otf ");
+}
+
+.f1{
+  font-family: font1;
+}
+.f2{
+  font-family: font2;
+}
+.f3{
+  font-family: Arial, Helvetica, sans-serif;
+}
