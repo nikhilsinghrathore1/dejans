@@ -1,0 +1,22 @@
+@font-face {
+  font-family: font1;
+  src: url("../Arame-Bold.ttf");
+}
+@font-face {
+  font-family: font2;
+  src: url("../Arame.ttf");
+}
+@font-face {
+  font-family: font3;
+  src: url("../MarsModel.ttf");
+}
+
+.f1{
+  font-family: font1;
+}
+.f2{
+  font-family: font2;
+}
+.f3{
+  font-family: font3;
+}
